@@ -39,6 +39,8 @@ heartCounts.forEach((icon) => {
 // all copy button click to copy
 
 const copyButtons = document.querySelectorAll(".copy-btn");
+const copyNumEl = document.getElementById("copy-num");
+let copyCount = 0;
 copyButtons.forEach((btn) => {
     btn.addEventListener("click", () => {
         const card = btn.closest(".cards");
@@ -48,6 +50,8 @@ copyButtons.forEach((btn) => {
         navigator.clipboard.writeText(number)
         .then(() => {
             alert(`Copied : ${number} `);
+            copyCount++ ;
+            copyNumEl.innerText = copyCount ;
         })
         .catch(() => {
             alert("Failed to copy")
