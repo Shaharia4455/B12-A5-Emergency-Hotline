@@ -58,3 +58,37 @@ copyButtons.forEach((btn) => {
         });
     });
 });
+
+// history-container
+
+const historyContainer = document.getElementById("history-container");
+
+const callButtons = document.querySelectorAll(".call-btn");
+
+callButtons.forEach((btn) => {
+    btn.addEventListener("click", function(){
+        const card = this.closest(".cards");
+        const serviceName = card.querySelector(".service-nam").innerText;
+        const serviceNumber = card.querySelector(".number").innerText;
+
+        const time = new Date().toLocaleTimeString();
+
+        const historyCard = document.createElement("div");
+        historyCard.className = "history-card mt-2 flex justify-between items-center p-4 bg-[#fafafa]";
+
+        historyCard.innerHTML = `<div class="grid gap-1">
+                  <h2 class="text-lg font-normal">${serviceName}</h2>
+                  <h3 class="text-lg text-gray-500">${serviceNumber}</h3>
+                </div>
+                <p class="text-lg">${time}</p>`;
+
+                historyContainer.appendChild(historyCard);
+
+    })
+})
+
+// History clean button
+
+document.getElementById("clear-btn").addEventListener("click", function(){
+    historyContainer.innerHTML = "";
+})
