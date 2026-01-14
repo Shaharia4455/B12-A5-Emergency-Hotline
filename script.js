@@ -65,13 +65,29 @@ const historyContainer = document.getElementById("history-container");
 
 const callButtons = document.querySelectorAll(".call-btn");
 
+const coinEl = document.getElementById("coin-num");
+
 callButtons.forEach((btn) => {
     btn.addEventListener("click", function(){
         const card = this.closest(".cards");
         const serviceName = card.querySelector(".service-nam").innerText;
         const serviceNumber = card.querySelector(".number").innerText;
 
+        let coin = parseInt(coinEl.innerText);
+
+        if(coin < 20){
+            alert("Not enough coin to make a call ❌");
+            return;
+        }
+            alert(`📞..Calling ${serviceName} : ${serviceNumber}`);
+
+            coin -= 20 ;
+            coinEl.innerText = coin; 
+
         const time = new Date().toLocaleTimeString();
+
+        // call alart
+
 
         const historyCard = document.createElement("div");
         historyCard.className = "history-card mt-2 flex justify-between items-center p-4 bg-[#fafafa]";
